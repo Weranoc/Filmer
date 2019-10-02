@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FilmerModelStoreContainer" CdmEntityContainer="FilmerEntities">
+    <EntitySetMapping Name="CinemaLocations">
+      <EntityTypeMapping TypeName="FilmerModel.CinemaLocation">
+        <MappingFragment StoreEntitySet="CinemaLocation">
+          <ScalarProperty Name="CinemaLocationID" ColumnName="CinemaLocationID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CinemaAddress" ColumnName="CinemaAddress" />
+          <ScalarProperty Name="CinemaName" ColumnName="CinemaName" />
+          <ScalarProperty Name="SalonID" ColumnName="SalonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="FilmerModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerViewings">
+      <EntityTypeMapping TypeName="FilmerModel.CustomerViewing">
+        <MappingFragment StoreEntitySet="CustomerViewing">
+          <ScalarProperty Name="CustomerViewingID" ColumnName="CustomerViewingID" />
+          <ScalarProperty Name="ViewingDate" ColumnName="ViewingDate" />
+          <ScalarProperty Name="ViewingID" ColumnName="ViewingID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="FilmerModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MemberPassword" ColumnName="MemberPassword" />
+          <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+          <ScalarProperty Name="MemberAdmin" ColumnName="MemberAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovieApis">
+      <EntityTypeMapping TypeName="FilmerModel.MovieApi">
+        <MappingFragment StoreEntitySet="MovieApi">
+          <ScalarProperty Name="MovieApiID" ColumnName="MovieApiID" />
+          <ScalarProperty Name="MovieKey" ColumnName="MovieKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salons">
+      <EntityTypeMapping TypeName="FilmerModel.Salon">
+        <MappingFragment StoreEntitySet="Salon">
+          <ScalarProperty Name="SalonID" ColumnName="SalonID" />
+          <ScalarProperty Name="SalonNumber" ColumnName="SalonNumber" />
+          <ScalarProperty Name="MaxSeats" ColumnName="MaxSeats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Viewings">
+      <EntityTypeMapping TypeName="FilmerModel.Viewing">
+        <MappingFragment StoreEntitySet="Viewing">
+          <ScalarProperty Name="ViewingID" ColumnName="ViewingID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CinemaLocationID" ColumnName="CinemaLocationID" />
+          <ScalarProperty Name="MovieApiID" ColumnName="MovieApiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
