@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="077d6af302bc4814a5e7763e8a7b1088" Name="Diagram1">
+        <EntityTypeShape EntityType="FilmerModel.CinemaLocation" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.Customer" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.CustomerViewing" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.Member" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.MovieApi" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.Salon" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.Viewing" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="FilmerModel.FK__Salon__CinemaLoc__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmerModel.FK__Customer__Member__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmerModel.FK__CustomerV__Custo__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmerModel.FK__CustomerV__Viewi__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmerModel.FK__Viewing__MovieAp__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmerModel.FK__Viewing__SalonID__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
