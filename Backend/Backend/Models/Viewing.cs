@@ -27,7 +27,7 @@ namespace Backend.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerViewing> CustomerViewings { get; set; }
-        public virtual MovieApi MovieApi { get; set; }
+        public virtual MovieApi MovieApi { internal get; set; }
         public virtual Salon Salon { get; set; }
     }
 }

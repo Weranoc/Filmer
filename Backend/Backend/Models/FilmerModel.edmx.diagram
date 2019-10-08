@@ -6,9 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="077d6af302bc4814a5e7763e8a7b1088" Name="Diagram1">
         <EntityTypeShape EntityType="FilmerModel.CinemaLocation" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FilmerModel.Customer" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.Customer" Width="1.5" PointX="9.375" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FilmerModel.CustomerViewing" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FilmerModel.Member" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmerModel.Member" Width="1.5" PointX="7.125" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FilmerModel.MovieApi" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FilmerModel.Salon" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="FilmerModel.Viewing" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />

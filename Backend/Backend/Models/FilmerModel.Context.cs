@@ -18,6 +18,7 @@ namespace Backend.Models
         public FilmerEntities()
             : base("name=FilmerEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

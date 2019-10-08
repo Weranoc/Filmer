@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FilmerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FilmerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CinemaLocation">
           <Key>
             <PropertyRef Name="CinemaLocationID" />
           </Key>
-          <Property Name="CinemaLocationID" Type="int" Nullable="false" />
+          <Property Name="CinemaLocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="City" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="CinemaAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="CinemaName" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Mail" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="MemberID" Type="int" />
         </EntityType>
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="MemberID" />
           </Key>
-          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="255" />
@@ -47,7 +47,7 @@
           <Key>
             <PropertyRef Name="MovieApiID" />
           </Key>
-          <Property Name="MovieApiID" Type="int" Nullable="false" />
+          <Property Name="MovieApiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MovieKey" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Salon">
@@ -63,7 +63,7 @@
           <Key>
             <PropertyRef Name="ViewingID" />
           </Key>
-          <Property Name="ViewingID" Type="int" Nullable="false" />
+          <Property Name="ViewingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="MovieApiID" Type="int" Nullable="false" />
           <Property Name="SalonID" Type="int" Nullable="false" />
@@ -173,8 +173,7 @@
             <End Role="Viewing" EntitySet="Viewing" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FilmerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -186,7 +185,7 @@
           <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CinemaAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CinemaName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Salons" Relationship="Self.FK__Salon__CinemaLoc__4316F928" FromRole="CinemaLocation" ToRole="Salon" />
+          <NavigationProperty Name="Salons" Relationship="Self.FK__Salon__CinemaLoc__4316F928" FromRole="CinemaLocation" ToRole="Salon" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -220,7 +219,7 @@
           <Property Name="MemberPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MemberAdmin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Member__440B1D61" FromRole="Member" ToRole="Customer" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Member__440B1D61" FromRole="Member" ToRole="Customer" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
         <EntityType Name="MovieApi">
           <Key>
@@ -239,7 +238,7 @@
           <Property Name="SalonNumber" Type="Int32" Nullable="false" />
           <Property Name="MaxSeats" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CinemaLocation" Relationship="Self.FK__Salon__CinemaLoc__4316F928" FromRole="Salon" ToRole="CinemaLocation" />
-          <NavigationProperty Name="Viewings" Relationship="Self.FK__Viewing__SalonID__46E78A0C" FromRole="Salon" ToRole="Viewing" />
+          <NavigationProperty Name="Viewings" Relationship="Self.FK__Viewing__SalonID__46E78A0C" FromRole="Salon" ToRole="Viewing" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
         <EntityType Name="Viewing">
           <Key>
@@ -249,9 +248,9 @@
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="MovieApiID" Type="Int32" Nullable="false" />
           <Property Name="SalonID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CustomerViewings" Relationship="Self.FK__CustomerV__Viewi__45F365D3" FromRole="Viewing" ToRole="CustomerViewing" />
-          <NavigationProperty Name="MovieApi" Relationship="Self.FK__Viewing__MovieAp__47DBAE45" FromRole="Viewing" ToRole="MovieApi" />
-          <NavigationProperty Name="Salon" Relationship="Self.FK__Viewing__SalonID__46E78A0C" FromRole="Viewing" ToRole="Salon" />
+          <NavigationProperty Name="CustomerViewings" Relationship="Self.FK__CustomerV__Viewi__45F365D3" FromRole="Viewing" ToRole="CustomerViewing" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="MovieApi" Relationship="Self.FK__Viewing__MovieAp__47DBAE45" FromRole="Viewing" ToRole="MovieApi" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+          <NavigationProperty Name="Salon" Relationship="Self.FK__Viewing__SalonID__46E78A0C" FromRole="Viewing" ToRole="Salon" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
         <Association Name="FK__Salon__CinemaLoc__4316F928">
           <End Role="CinemaLocation" Type="Self.CinemaLocation" Multiplicity="1" />
@@ -325,7 +324,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FilmerEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FilmerEntities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="CinemaLocations" EntityType="Self.CinemaLocation" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="CustomerViewings" EntityType="Self.CustomerViewing" />

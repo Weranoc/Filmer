@@ -27,6 +27,6 @@ namespace Backend.Models
     
         public virtual CinemaLocation CinemaLocation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Viewing> Viewings { get; set; }
+        public virtual ICollection<Viewing> Viewings { internal get; set; }
     }
 }
