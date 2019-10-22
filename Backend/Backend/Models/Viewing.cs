@@ -17,17 +17,18 @@ namespace Backend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Viewing()
         {
-            this.CustomerViewings = new HashSet<CustomerViewing>();
+            this.MemberViewings = new HashSet<MemberViewing>();
         }
     
         public int ViewingID { get; set; }
         public decimal Price { get; set; }
+        public System.DateTime ViewingDate { get; set; }
         public int MovieApiID { get; set; }
         public int SalonID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerViewing> CustomerViewings { get; set; }
-        public virtual MovieApi MovieApi { internal get; set; }
+        public virtual ICollection<MemberViewing> MemberViewings { get; set; }
+        public virtual MovieApi MovieApi { get; set; }
         public virtual Salon Salon { get; set; }
     }
 }

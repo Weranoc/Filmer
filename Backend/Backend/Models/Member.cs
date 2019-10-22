@@ -17,18 +17,19 @@ namespace Backend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Member()
         {
-            this.Customers = new HashSet<Customer>();
+            this.MemberViewings = new HashSet<MemberViewing>();
         }
     
         public int MemberID { get; set; }
+        public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public string MemberPassword { get; set; }
-        public System.DateTime JoinDate { get; set; }
-        public string MemberAdmin { get; set; }
+        public string Password { get; set; }
+        public Nullable<System.DateTime> JoinDate { get; set; }
+        public string Admin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { internal get; set; }
+        public virtual ICollection<MemberViewing> MemberViewings { get; set; }
     }
 }

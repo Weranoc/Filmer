@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FilmerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CinemaLocation">
+    <Key>
+      <PropertyRef Name="CinemaLocationID" />
+    </Key>
+    <Property Name="CinemaLocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CinemaAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CinemaName" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" />
+    <Property Name="JoinDate" Type="datetime" />
+    <Property Name="Admin" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="MemberViewing">
+    <Key>
+      <PropertyRef Name="MemberViewingID" />
+    </Key>
+    <Property Name="MemberViewingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ViewingID" Type="int" Nullable="false" />
+    <Property Name="MemberID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovieApi">
+    <Key>
+      <PropertyRef Name="MovieApiID" />
+    </Key>
+    <Property Name="MovieApiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MovieKey" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salon">
+    <Key>
+      <PropertyRef Name="SalonID" />
+    </Key>
+    <Property Name="SalonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CinemaLocationID" Type="int" Nullable="false" />
+    <Property Name="SalonNumber" Type="int" Nullable="false" />
+    <Property Name="MaxSeats" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Viewing">
+    <Key>
+      <PropertyRef Name="ViewingID" />
+    </Key>
+    <Property Name="ViewingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="ViewingDate" Type="datetime" Nullable="false" />
+    <Property Name="MovieApiID" Type="int" Nullable="false" />
+    <Property Name="SalonID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__MemberVie__Membe__4222D4EF">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="MemberViewing" Type="Self.MemberViewing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="MemberViewing">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MemberVie__Viewi__4316F928">
+    <End Role="Viewing" Type="Self.Viewing" Multiplicity="1" />
+    <End Role="MemberViewing" Type="Self.MemberViewing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viewing">
+        <PropertyRef Name="ViewingID" />
+      </Principal>
+      <Dependent Role="MemberViewing">
+        <PropertyRef Name="ViewingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Salon__CinemaLoc__412EB0B6">
+    <End Role="CinemaLocation" Type="Self.CinemaLocation" Multiplicity="1" />
+    <End Role="Salon" Type="Self.Salon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CinemaLocation">
+        <PropertyRef Name="CinemaLocationID" />
+      </Principal>
+      <Dependent Role="Salon">
+        <PropertyRef Name="CinemaLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Viewing__MovieAp__44FF419A">
+    <End Role="MovieApi" Type="Self.MovieApi" Multiplicity="1" />
+    <End Role="Viewing" Type="Self.Viewing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieApi">
+        <PropertyRef Name="MovieApiID" />
+      </Principal>
+      <Dependent Role="Viewing">
+        <PropertyRef Name="MovieApiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Viewing__SalonID__440B1D61">
+    <End Role="Salon" Type="Self.Salon" Multiplicity="1" />
+    <End Role="Viewing" Type="Self.Viewing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salon">
+        <PropertyRef Name="SalonID" />
+      </Principal>
+      <Dependent Role="Viewing">
+        <PropertyRef Name="SalonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FilmerModelStoreContainer">
+    <EntitySet Name="CinemaLocation" EntityType="Self.CinemaLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberViewing" EntityType="Self.MemberViewing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieApi" EntityType="Self.MovieApi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salon" EntityType="Self.Salon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Viewing" EntityType="Self.Viewing" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__MemberVie__Membe__4222D4EF" Association="Self.FK__MemberVie__Membe__4222D4EF">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MemberViewing" EntitySet="MemberViewing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MemberVie__Viewi__4316F928" Association="Self.FK__MemberVie__Viewi__4316F928">
+      <End Role="Viewing" EntitySet="Viewing" />
+      <End Role="MemberViewing" EntitySet="MemberViewing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Salon__CinemaLoc__412EB0B6" Association="Self.FK__Salon__CinemaLoc__412EB0B6">
+      <End Role="CinemaLocation" EntitySet="CinemaLocation" />
+      <End Role="Salon" EntitySet="Salon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Viewing__MovieAp__44FF419A" Association="Self.FK__Viewing__MovieAp__44FF419A">
+      <End Role="MovieApi" EntitySet="MovieApi" />
+      <End Role="Viewing" EntitySet="Viewing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Viewing__SalonID__440B1D61" Association="Self.FK__Viewing__SalonID__440B1D61">
+      <End Role="Salon" EntitySet="Salon" />
+      <End Role="Viewing" EntitySet="Viewing" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
