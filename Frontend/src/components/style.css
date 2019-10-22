@@ -1,0 +1,103 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-image: url("http://resources.mynewsdesk.com/image/upload/c_limit,dpr_2.625,f_auto,h_700,q_auto,w_360/ceauuhnry6lxgxv05wat.jpg");
+    background-size: cover;
+    background-size: 100% 100%;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: rgb(148, 11, 11, 0.8);
+    font-family: 'Pridi', serif;
+  }
+  
+  .logo {
+    color: rgb(226, 226, 226);
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-size: 20px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+  }
+  
+  .nav-links li {
+    list-style: none;
+  }
+  
+  .nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .maindiv {
+    width: 70%;
+    height: 470px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('https://static.digit.in/default/561f2e8151abcf4ad4f8755030443d7353a4573a.jpeg');
+    background-size: 100% 100%;
+    box-shadow: 1px 2px 10px rgb(148, 11, 11);
+    animation: slider 15s infinite linear;
+  }
+  
+  @keyframes slider {
+    0% {background-image: url('https://static.digit.in/default/561f2e8151abcf4ad4f8755030443d7353a4573a.jpeg');}
+    
+    25% {background-image: url('https://cnet1.cbsistatic.com/img/JrgB4IFlNIViJC1gNxweCxE0aH4=/1200x675/2019/09/03/b288f964-9d25-4317-b509-159f43513571/ad-astra-brad-pitt-11-promo.jpg');}
+  
+    50% {background-image: url('https://images.svd.se/v2/images/4d91ed04-f4db-4f68-8159-738a0800f0c5?fit=crop&h=490&q=80&upscale=true&w=980&s=55ed57539afe474ac89a9e95f58e864244dc567b');}
+    
+    75% {background-image: url('https://imgs.aftonbladet-cdn.se/v2/images/254e9caf-e18c-4996-93d1-0764cea04d79?fit=crop&h=1069&q=50&w=1900&s=636fef73bd8721c004ba06d94b84286978c45a8a');}
+  }
+  
+  footer {
+    text-align: center;
+    padding-top: 38%;
+  }
+  
+  .socicons-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+   }
+   .socicons-list li {
+    margin: 25px 15px;
+   }
+   .socicons-list li a {
+    text-decoration: none;
+    padding: 20px;
+    font-size: 30px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #f1f1f1;
+    transition: all ease-in-out 150ms;
+   }
+   .socicons-list li a:hover {
+    text-shadow: 0 5px 10px #212121;
+   }
+   .socicons-list li:nth-child(1) a {
+    background-color: #3e5b98;
+   }
+   .socicons-list li:nth-child(2) a {
+    background-color: #c13584;
+   }
+   .socicons-list li:nth-child(3) a {
+    background-color: #4da7de;
+   }
