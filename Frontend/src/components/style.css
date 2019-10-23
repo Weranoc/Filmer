@@ -7,7 +7,6 @@
   body {
     background-image: url("http://resources.mynewsdesk.com/image/upload/c_limit,dpr_2.625,f_auto,h_700,q_auto,w_360/ceauuhnry6lxgxv05wat.jpg");
     background-size: cover;
-    background-size: 100% 100%;
   }
   
   nav {
@@ -101,3 +100,10 @@
    .socicons-list li:nth-child(3) a {
     background-color: #4da7de;
    }
+   
+  h2 {
+    color: rgb(226, 226, 226);
+    letter-spacing: 3px;
+    font-size: 20px;
+    font-family: 'Pridi', serif;
+  }
