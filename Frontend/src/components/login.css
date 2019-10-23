@@ -1,56 +1,10 @@
-* {
-    margin: 0px;
-    padding: 0px;
-}
-
-body {
-    background-image: url("http://resources.mynewsdesk.com/image/upload/c_limit,dpr_2.625,f_auto,h_700,q_auto,w_360/ceauuhnry6lxgxv05wat.jpg");
-    background-size: cover;
-    background-size: 100% 100%;
-}
-
-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 8vh;
-    background-color: rgb(148, 11, 11);
-    font-family: 'Pridi', serif;
-}
-
-.logo {
-    color: rgb(226, 226, 226);
-    text-transform: uppercase;
-    letter-spacing: 10px;
-    font-size: 20px;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-around;
-    width: 50%;
-}
-
-.nav-links li {
-    list-style: none;
-}
-
-.nav-links a {
-    color: rgb(226, 226, 226);
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
 .signin {
     background: rgb(148, 11, 11, 0.8);
     border-radius: 15px;
     padding: 40px;
-    width: 250px;
+    display: inline-flex;
     margin: auto;
     margin-top: 70px;
-    height: 400px;
     margin-left: 180x;
 }
 
@@ -116,4 +70,8 @@ a:hover {
 p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:  rgb(226, 226, 226);
+}
+
+.back {
+    font-family: Arial, Helvetica, sans-serif;
 }

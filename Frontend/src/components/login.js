@@ -1,6 +1,5 @@
 import React from "react";
 import login from './login.css';
-import login2 from './login2.css';
 import "./../App.css";
 
 class LoginPage extends React.Component {
@@ -25,30 +24,30 @@ class LoginPage extends React.Component {
                 <h4>FILMSTADEN</h4>
                 </div>
             <ul class="nav-links">
-                <li><a href="index.html">Start</a></li>
-                <li><a href="currentmovies.html">Aktuella filmer</a></li>
-                <li><a href="comingmovies.html">Kommande filmer</a></li>
-                <li><a href="login.html">Logga in</a></li>
+                <li><a href="index">Start</a></li>
+                <li><a href="currentmovies">Aktuella filmer</a></li>
+                <li><a href="comingmovies">Kommande filmer</a></li>
+                <li><a href="login">Logga in</a></li>
             </ul>
             </nav>
 
             <div class="signin">
-                <form>
-                    <h2 style={login2}>Gå till Mina Sidor</h2><br></br>
+                <form id="loginForm">
+                <h2 style={login}>Gå till Mina Sidor</h2><br/>
 
-                    <input type="text" name="username" placeholder="E-post"></input><br></br><br></br>
+                <input type="text" name="username" placeholder="E-post"/><br/><br/>
 
-                    <input type="password" name="password" placeholder="Lösenord"></input><br></br><br></br>
+                <input type="password" name="password" placeholder="Lösenord"/><br/><br/><br/>
 
-                    <a href="signedin.html"><input class="btn" type="button" value="Logga in"></input></a><br></br><br></br><br></br>
-                    
-                    <div id="container">
-                        <a href="forgot.html" style={login2}>Glömt lösenord?</a>
+                <a href="signedin"><input class="btn" type="button" value="Logga in"/></a><br/><br/><br/>
 
-                    </div>
-                    <p>Inte medlem?<a href="signup.html" style={login2}>&nbsp;Registrera</a></p><br></br><br></br>
-                    
-                    <a id="back" href="index" style={login2}>Tillbaka</a> 
+                <div id="container">
+                    <a href="forgot" style={{marginright: '0px', fontsize: '16px', fontfamily:'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'}}>Glömt lösenord?</a>
+
+                </div><br/><br/>
+                <p>Inte medlem?<a href="registration" style={{padding: '5px', fontsize: '16px'}}>&nbsp;Registrera</a></p><br/><br/>
+
+                <a href="index" style={{fontfamily: 'Arial, Helvetica, sans-serif'}}>Tillbaka</a> 
                 </form>
             </div>
 
