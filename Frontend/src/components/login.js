@@ -3,6 +3,38 @@ import login from './login.css';
 import "./../App.css";
 
 class LoginPage extends React.Component {
+  constructor(props) { 
+    super(props); 
+    this.state = { email: "" , password: ""}; 
+  } 
+handleClick = () => { 
+    fetch("http://localhost:59464/api/Members", { 
+      method: "POST", 
+      headers: { 
+        Accept: "application/json", 
+        "Content-Type": "application/json; charset=UTF-8" 
+      }, 
+      body: JSON.stringify({ 
+        email: this.state.email, 
+        password: this.state.password 
+      }) 
+    }).then(Response => Response.json()) 
+    .then(data => { 
+      if(data == null){ 
+         
+      }else{ 
+        this.props.LoggedIn(data); 
+      } 
+    }) 
+  }; 
+
+  onChange = (e) =>{ 
+      const value = e.target.checked === undefined ? e.target.value : e.target.checked; 
+      this.setState({ 
+          [e.target.name]: value, 
+      }) 
+  } 
+
   render() {
     return (
 
@@ -35,12 +67,12 @@ class LoginPage extends React.Component {
                 <form id="loginForm">
                 <h2 style={login}>Gå till Mina Sidor</h2><br/>
 
-                <input type="text" name="username" placeholder="E-post"/><br/><br/>
-
-                <input type="password" name="password" placeholder="Lösenord"/><br/><br/><br/>
-
-                <a href="signedin"><input class="btn" type="button" value="Logga in"/></a><br/><br/><br/>
-
+                <input type="text" name="username" placeholder="E-post" value={this.state.email} onChange={e => this.onChange(e)}/><br/><br/> 
+ 
+                <input type="password" name="password" placeholder="Lösenord" value={this.state.password} onChange={e => this.setState({ password: e.target.value })}/><br/><br/><br/> 
+ 
+                <a href="signedin"><input class="btn" type="button" value="Logga in" onClick={() => this.handleClick()}/></a><br/><br/><br/> 
+ 
                 <div id="container">
                     <a href="forgot" style={{marginright: '0px', fontsize: '16px', fontfamily:'Segoe UI, Tahoma, Geneva, Verdana, sans-serif'}}>Glömt lösenord?</a>
 
