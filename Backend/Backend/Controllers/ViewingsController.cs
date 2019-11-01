@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using Backend.Libraries.MovieDB;
 using Backend.Models;
 
 namespace Backend.Controllers
@@ -19,10 +20,38 @@ namespace Backend.Controllers
         private FilmerEntities db = new FilmerEntities();
 
         // GET: api/Viewings
-        public IQueryable<Viewing> GetViewings()
+        public List<ViewvingsViewModel> Getmovies()
         {
-            return db.Viewings.Include(u => u.Salon.CinemaLocation);
+            var listOfMovies = db.Viewings.OrderBy(v => v.ViewingDate); // Get movies and sort them in date order
+            var resultList = new List<ViewvingsViewModel>(); // Define the return structure
+          
+            foreach (var item in listOfMovies) // For each movie in the viewings table (plus lounge information)
+            {
+               /* try
+                {*/
+                    var movieFromMovieDB = MovieFetcher.GetMovie(item.MovieApi.MovieKey); // Make a fetch to Movie DB to get information about a movie
+                    // To the return list, add a View Model and add the information from both the Viewing, Lounge and MovieDB into a single object
+                    resultList.Add(new ViewvingsViewModel
+                    {
+                        Id = item.ViewingID,
+                        MovieName = movieFromMovieDB.Title, // Title for the Movie from the MovieDB
+                        Length = movieFromMovieDB.Runtime ?? 0, // The runtime from MovieDB
+                        Adult = movieFromMovieDB.Adult, // If it's a adult movie, from MovieDB
+                        LoungeName = item.Salon.SalonNumber.ToString(), // The lounge name from Lounge entity in the database (contected using Entity Framework)
+                        ViewingDate = item.ViewingDate, // Date of the viewing from the Viewing entity in the database
+                        TotalSeats = item.Salon.MaxSeats // And number of seats in the Lounge
+                    });
+                /*}
+                catch
+                {
+                    return new List<ViewvingsViewModel>();
+                }*/
+            }
+
+            return resultList; // Return the list of Movies
+
         }
+
 
         // GET: api/Viewings/5
         [ResponseType(typeof(Viewing))]
@@ -82,23 +111,8 @@ namespace Backend.Controllers
             }
 
             db.Viewings.Add(viewing);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (ViewingExists(viewing.ViewingID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            db.SaveChanges();
+  
             return CreatedAtRoute("DefaultApi", new { id = viewing.ViewingID }, viewing);
         }
 

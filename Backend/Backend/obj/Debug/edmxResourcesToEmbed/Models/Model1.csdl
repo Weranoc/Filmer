@@ -153,5 +153,15 @@
       <End Role="Salon" EntitySet="Salons" />
       <End Role="Viewing" EntitySet="Viewings" />
     </AssociationSet>
+    <EntitySet Name="accesstokens" EntityType="FilmerModel.accesstoken" />
   </EntityContainer>
+  <EntityType Name="accesstoken">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="expires" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

@@ -32,5 +32,6 @@ namespace Backend.Models
         public virtual DbSet<MovieApi> MovieApis { get; set; }
         public virtual DbSet<Salon> Salons { get; set; }
         public virtual DbSet<Viewing> Viewings { get; set; }
+        public virtual DbSet<accesstoken> accesstokens { get; set; }
     }
 }

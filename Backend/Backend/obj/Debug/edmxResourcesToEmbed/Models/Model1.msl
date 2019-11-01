@@ -63,5 +63,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="accesstokens">
+      <EntityTypeMapping TypeName="FilmerModel.accesstoken">
+        <MappingFragment StoreEntitySet="accesstokens">
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="expires" ColumnName="expires" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

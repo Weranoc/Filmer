@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using Backend.Libraries;
 using Backend.Models;
 
 namespace Backend.Controllers
@@ -17,6 +18,29 @@ namespace Backend.Controllers
     public class MembersController : ApiController
     {
         private FilmerEntities db = new FilmerEntities();
+        private LoginUtility loginUtil = new LoginUtility();
+
+        [Route("login")]
+        [HttpPost]
+        public AccessTokenViewModel Login(MemberLoginModel memberLogin)
+        {
+            var tokenString = loginUtil.Login(memberLogin.email, memberLogin.password);
+
+            if (tokenString != string.Empty)
+            {
+                var expireDate = DateTime.Now.AddHours(1);
+                db.accesstokens.Add(new accesstoken { token = tokenString, expires = expireDate, created = DateTime.Now });
+                db.SaveChanges();
+
+                return new AccessTokenViewModel { accessToken = tokenString, expireDate = expireDate };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
 
         // GET: api/Members
         public IQueryable<Member> GetMembers()

@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="FilmerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="accesstokens">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="token" Type="varchar(max)" Nullable="false" />
+    <Property Name="expires" Type="datetime" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="CinemaLocation">
     <Key>
       <PropertyRef Name="CinemaLocationID" />
@@ -117,6 +126,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="FilmerModelStoreContainer">
+    <EntitySet Name="accesstokens" EntityType="Self.accesstokens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CinemaLocation" EntityType="Self.CinemaLocation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MemberViewing" EntityType="Self.MemberViewing" Schema="dbo" store:Type="Tables" />
