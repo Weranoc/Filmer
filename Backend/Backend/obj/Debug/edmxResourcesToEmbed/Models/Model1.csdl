@@ -33,14 +33,7 @@
     <Property Name="MemberID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Member" Relationship="Self.FK__MemberVie__Membe__4222D4EF" FromRole="MemberViewing" ToRole="Member" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:GetterAccess="Internal" />
     <NavigationProperty Name="Viewing" Relationship="Self.FK__MemberVie__Viewi__4316F928" FromRole="MemberViewing" ToRole="Viewing" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:GetterAccess="Internal" />
-  </EntityType>
-  <EntityType Name="MovieApi">
-    <Key>
-      <PropertyRef Name="MovieApiID" />
-    </Key>
-    <Property Name="MovieApiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MovieKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Viewings" Relationship="Self.FK__Viewing__MovieAp__44FF419A" FromRole="MovieApi" ToRole="Viewing" a:GetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+    <Property Name="Tickets" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Salon">
     <Key>
@@ -60,11 +53,11 @@
     <Property Name="ViewingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="ViewingDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="MovieApiID" Type="Int32" Nullable="false" />
     <Property Name="SalonID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="MemberViewings" Relationship="Self.FK__MemberVie__Viewi__4316F928" FromRole="Viewing" ToRole="MemberViewing" />
-    <NavigationProperty Name="MovieApi" Relationship="Self.FK__Viewing__MovieAp__44FF419A" FromRole="Viewing" ToRole="MovieApi" />
     <NavigationProperty Name="Salon" Relationship="Self.FK__Viewing__SalonID__440B1D61" FromRole="Viewing" ToRole="Salon" />
+    <Property Name="MovieApiID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MovieApi" Relationship="FilmerModel.FK__Viewing__MovieAp__45F365D3" FromRole="Viewing" ToRole="MovieApi" />
   </EntityType>
   <Association Name="FK__Salon__CinemaLoc__412EB0B6">
     <End Role="CinemaLocation" Type="Self.CinemaLocation" Multiplicity="1" />
@@ -102,18 +95,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Viewing__MovieAp__44FF419A">
-    <End Role="MovieApi" Type="Self.MovieApi" Multiplicity="1" />
-    <End Role="Viewing" Type="Self.Viewing" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MovieApi">
-        <PropertyRef Name="MovieApiID" />
-      </Principal>
-      <Dependent Role="Viewing">
-        <PropertyRef Name="MovieApiID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Viewing__SalonID__440B1D61">
     <End Role="Salon" Type="Self.Salon" Multiplicity="1" />
     <End Role="Viewing" Type="Self.Viewing" Multiplicity="*" />
@@ -130,7 +111,6 @@
     <EntitySet Name="CinemaLocations" EntityType="Self.CinemaLocation" />
     <EntitySet Name="Members" EntityType="Self.Member" />
     <EntitySet Name="MemberViewings" EntityType="Self.MemberViewing" />
-    <EntitySet Name="MovieApis" EntityType="Self.MovieApi" />
     <EntitySet Name="Salons" EntityType="Self.Salon" />
     <EntitySet Name="Viewings" EntityType="Self.Viewing" />
     <AssociationSet Name="FK__Salon__CinemaLoc__412EB0B6" Association="Self.FK__Salon__CinemaLoc__412EB0B6">
@@ -145,15 +125,16 @@
       <End Role="Viewing" EntitySet="Viewings" />
       <End Role="MemberViewing" EntitySet="MemberViewings" />
     </AssociationSet>
-    <AssociationSet Name="FK__Viewing__MovieAp__44FF419A" Association="Self.FK__Viewing__MovieAp__44FF419A">
-      <End Role="MovieApi" EntitySet="MovieApis" />
-      <End Role="Viewing" EntitySet="Viewings" />
-    </AssociationSet>
     <AssociationSet Name="FK__Viewing__SalonID__440B1D61" Association="Self.FK__Viewing__SalonID__440B1D61">
       <End Role="Salon" EntitySet="Salons" />
       <End Role="Viewing" EntitySet="Viewings" />
     </AssociationSet>
     <EntitySet Name="accesstokens" EntityType="FilmerModel.accesstoken" />
+    <EntitySet Name="MovieApis" EntityType="FilmerModel.MovieApi" />
+    <AssociationSet Name="FK__Viewing__MovieAp__45F365D3" Association="FilmerModel.FK__Viewing__MovieAp__45F365D3">
+      <End Role="MovieApi" EntitySet="MovieApis" />
+      <End Role="Viewing" EntitySet="Viewings" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="accesstoken">
     <Key>
@@ -164,4 +145,24 @@
     <Property Name="expires" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
+  <EntityType Name="MovieApi">
+    <Key>
+      <PropertyRef Name="MovieApiID" />
+    </Key>
+    <Property Name="MovieApiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieKey" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Viewings" Relationship="FilmerModel.FK__Viewing__MovieAp__45F365D3" FromRole="MovieApi" ToRole="Viewing" />
+  </EntityType>
+  <Association Name="FK__Viewing__MovieAp__45F365D3">
+    <End Type="FilmerModel.MovieApi" Role="MovieApi" Multiplicity="1" />
+    <End Type="FilmerModel.Viewing" Role="Viewing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieApi">
+        <PropertyRef Name="MovieApiID" />
+      </Principal>
+      <Dependent Role="Viewing">
+        <PropertyRef Name="MovieApiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

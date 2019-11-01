@@ -32,7 +32,7 @@ class profilePage extends React.Component {
 
                         <div class="signin">
                                 <form>
-                                    <h2 style={{color: 'rgb(226, 226, 226)', letterspacing: '3px', fontsize: '20px', fontfamily: 'Pridi, serif'}}>Min profil</h2><Viewings/><br/><br/>
+                                    <h2 style={{color: 'rgb(226, 226, 226)', letterspacing: '3px', fontsize: '20px', fontfamily: 'Pridi, serif'}}>Min profil</h2><Viewings signInToken={this.props.memberToken}/><br/><br/>
                                 </form>
                             </div>
             </div>

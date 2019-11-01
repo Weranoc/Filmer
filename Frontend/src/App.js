@@ -71,7 +71,7 @@ class App extends React.Component {
         )}
         {this.state.loggedIn ? (
           this.state.chosenPage === "profile"? (
-            <ProfilePage chosenPage={page =>this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)}/>
+            <ProfilePage chosenPage={page =>this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)} memberToken={this.state.accessToken}/>
         ) : (
             <div/>
           )

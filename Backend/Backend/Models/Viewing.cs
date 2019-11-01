@@ -23,12 +23,12 @@ namespace Backend.Models
         public int ViewingID { get; set; }
         public decimal Price { get; set; }
         public System.DateTime ViewingDate { get; set; }
-        public int MovieApiID { get; set; }
         public int SalonID { get; set; }
+        public int MovieApiID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MemberViewing> MemberViewings { get; set; }
-        public virtual MovieApi MovieApi { get; set; }
         public virtual Salon Salon { get; set; }
+        public virtual MovieApi MovieApi { get; set; }
     }
 }

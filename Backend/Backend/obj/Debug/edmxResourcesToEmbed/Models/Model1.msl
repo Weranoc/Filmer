@@ -28,17 +28,10 @@
     <EntitySetMapping Name="MemberViewings">
       <EntityTypeMapping TypeName="FilmerModel.MemberViewing">
         <MappingFragment StoreEntitySet="MemberViewing">
+          <ScalarProperty Name="Tickets" ColumnName="Tickets" />
           <ScalarProperty Name="MemberViewingID" ColumnName="MemberViewingID" />
           <ScalarProperty Name="ViewingID" ColumnName="ViewingID" />
           <ScalarProperty Name="MemberID" ColumnName="MemberID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MovieApis">
-      <EntityTypeMapping TypeName="FilmerModel.MovieApi">
-        <MappingFragment StoreEntitySet="MovieApi">
-          <ScalarProperty Name="MovieApiID" ColumnName="MovieApiID" />
-          <ScalarProperty Name="MovieKey" ColumnName="MovieKey" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -55,10 +48,10 @@
     <EntitySetMapping Name="Viewings">
       <EntityTypeMapping TypeName="FilmerModel.Viewing">
         <MappingFragment StoreEntitySet="Viewing">
+          <ScalarProperty Name="MovieApiID" ColumnName="MovieApiID" />
           <ScalarProperty Name="ViewingID" ColumnName="ViewingID" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="ViewingDate" ColumnName="ViewingDate" />
-          <ScalarProperty Name="MovieApiID" ColumnName="MovieApiID" />
           <ScalarProperty Name="SalonID" ColumnName="SalonID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -70,6 +63,14 @@
           <ScalarProperty Name="expires" ColumnName="expires" />
           <ScalarProperty Name="token" ColumnName="token" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovieApis">
+      <EntityTypeMapping TypeName="FilmerModel.MovieApi">
+        <MappingFragment StoreEntitySet="MovieApi">
+          <ScalarProperty Name="MovieKey" ColumnName="MovieKey" />
+          <ScalarProperty Name="MovieApiID" ColumnName="MovieApiID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

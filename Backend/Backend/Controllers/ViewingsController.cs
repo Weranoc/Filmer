@@ -22,7 +22,7 @@ namespace Backend.Controllers
         // GET: api/Viewings
         public List<ViewvingsViewModel> Getmovies()
         {
-            var listOfMovies = db.Viewings.OrderBy(v => v.ViewingDate); // Get movies and sort them in date order
+            var listOfMovies = db.Viewings.Include("Salon").Include("MovieApi").OrderBy(v => v.ViewingDate); // Get movies and sort them in date order
             var resultList = new List<ViewvingsViewModel>(); // Define the return structure
           
             foreach (var item in listOfMovies) // For each movie in the viewings table (plus lounge information)
@@ -37,7 +37,7 @@ namespace Backend.Controllers
                         MovieName = movieFromMovieDB.Title, // Title for the Movie from the MovieDB
                         Length = movieFromMovieDB.Runtime ?? 0, // The runtime from MovieDB
                         Adult = movieFromMovieDB.Adult, // If it's a adult movie, from MovieDB
-                        LoungeName = item.Salon.SalonNumber.ToString(), // The lounge name from Lounge entity in the database (contected using Entity Framework)
+                        LoungeName = item.Salon.SalonNumber.ToString(),// The lounge name from Lounge entity in the database (contected using Entity Framework)
                         ViewingDate = item.ViewingDate, // Date of the viewing from the Viewing entity in the database
                         TotalSeats = item.Salon.MaxSeats // And number of seats in the Lounge
                     });

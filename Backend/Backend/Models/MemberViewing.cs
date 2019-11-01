@@ -17,6 +17,7 @@ namespace Backend.Models
         public int MemberViewingID { get; set; }
         public int ViewingID { get; set; }
         public int MemberID { get; set; }
+        public int Tickets { get; set; }
     
         public virtual Member Member { internal get; set; }
         public virtual Viewing Viewing { internal get; set; }

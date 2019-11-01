@@ -38,6 +38,7 @@
     <Property Name="MemberViewingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ViewingID" Type="int" Nullable="false" />
     <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="Tickets" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MovieApi">
     <Key>
@@ -65,7 +66,7 @@
     <Property Name="MovieApiID" Type="int" Nullable="false" />
     <Property Name="SalonID" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__MemberVie__Membe__4222D4EF">
+  <Association Name="FK__MemberVie__Membe__4316F928">
     <End Role="Member" Type="Self.Member" Multiplicity="1" />
     <End Role="MemberViewing" Type="Self.MemberViewing" Multiplicity="*" />
     <ReferentialConstraint>
@@ -77,7 +78,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MemberVie__Viewi__4316F928">
+  <Association Name="FK__MemberVie__Viewi__440B1D61">
     <End Role="Viewing" Type="Self.Viewing" Multiplicity="1" />
     <End Role="MemberViewing" Type="Self.MemberViewing" Multiplicity="*" />
     <ReferentialConstraint>
@@ -89,7 +90,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Salon__CinemaLoc__412EB0B6">
+  <Association Name="FK__Salon__CinemaLoc__44FF419A">
     <End Role="CinemaLocation" Type="Self.CinemaLocation" Multiplicity="1" />
     <End Role="Salon" Type="Self.Salon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -101,7 +102,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Viewing__MovieAp__44FF419A">
+  <Association Name="FK__Viewing__MovieAp__45F365D3">
     <End Role="MovieApi" Type="Self.MovieApi" Multiplicity="1" />
     <End Role="Viewing" Type="Self.Viewing" Multiplicity="*" />
     <ReferentialConstraint>
@@ -113,7 +114,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Viewing__SalonID__440B1D61">
+  <Association Name="FK__Viewing__SalonID__46E78A0C">
     <End Role="Salon" Type="Self.Salon" Multiplicity="1" />
     <End Role="Viewing" Type="Self.Viewing" Multiplicity="*" />
     <ReferentialConstraint>
@@ -133,23 +134,23 @@
     <EntitySet Name="MovieApi" EntityType="Self.MovieApi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Salon" EntityType="Self.Salon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Viewing" EntityType="Self.Viewing" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__MemberVie__Membe__4222D4EF" Association="Self.FK__MemberVie__Membe__4222D4EF">
+    <AssociationSet Name="FK__MemberVie__Membe__4316F928" Association="Self.FK__MemberVie__Membe__4316F928">
       <End Role="Member" EntitySet="Member" />
       <End Role="MemberViewing" EntitySet="MemberViewing" />
     </AssociationSet>
-    <AssociationSet Name="FK__MemberVie__Viewi__4316F928" Association="Self.FK__MemberVie__Viewi__4316F928">
+    <AssociationSet Name="FK__MemberVie__Viewi__440B1D61" Association="Self.FK__MemberVie__Viewi__440B1D61">
       <End Role="Viewing" EntitySet="Viewing" />
       <End Role="MemberViewing" EntitySet="MemberViewing" />
     </AssociationSet>
-    <AssociationSet Name="FK__Salon__CinemaLoc__412EB0B6" Association="Self.FK__Salon__CinemaLoc__412EB0B6">
+    <AssociationSet Name="FK__Salon__CinemaLoc__44FF419A" Association="Self.FK__Salon__CinemaLoc__44FF419A">
       <End Role="CinemaLocation" EntitySet="CinemaLocation" />
       <End Role="Salon" EntitySet="Salon" />
     </AssociationSet>
-    <AssociationSet Name="FK__Viewing__MovieAp__44FF419A" Association="Self.FK__Viewing__MovieAp__44FF419A">
+    <AssociationSet Name="FK__Viewing__MovieAp__45F365D3" Association="Self.FK__Viewing__MovieAp__45F365D3">
       <End Role="MovieApi" EntitySet="MovieApi" />
       <End Role="Viewing" EntitySet="Viewing" />
     </AssociationSet>
-    <AssociationSet Name="FK__Viewing__SalonID__440B1D61" Association="Self.FK__Viewing__SalonID__440B1D61">
+    <AssociationSet Name="FK__Viewing__SalonID__46E78A0C" Association="Self.FK__Viewing__SalonID__46E78A0C">
       <End Role="Salon" EntitySet="Salon" />
       <End Role="Viewing" EntitySet="Viewing" />
     </AssociationSet>

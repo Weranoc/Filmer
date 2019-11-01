@@ -27,6 +27,11 @@ class index extends React.Component {
               <div/>
             )}
             {this.props.logain ? (
+          <li><a /*href="login"*/ onClick={() => this.props.chosenPage("profile")}>Profil</a></li>
+            ) : (
+              <div/>
+            )}
+            {this.props.logain ? (
             <li><a onClick={() => this.props.loggedIn({})}>Logga ut</a></li>
               ) : (
                 <div/>
