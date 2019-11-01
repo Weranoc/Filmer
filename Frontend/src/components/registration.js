@@ -57,10 +57,9 @@ class registrationPage extends React.Component {
                 <h4>FILMSTADEN</h4>
                 </div>
             <ul class="nav-links">
-                <li><a href="index">Start</a></li>
-                <li><a href="currentmovies">Aktuella filmer</a></li>
-                <li><a href="comingmovies">Kommande filmer</a></li>
-                <li><a href="login">Logga in</a></li>
+                <li><a /*href="home"*/  onClick={() => this.props.chosenPage("home")}>Start</a></li>
+                <li><a /*href="movies"*/ onClick={() => this.props.chosenPage("movies")}>Filmer</a></li>
+                <li><a /*href="login"*/ onClick={() => this.props.chosenPage("login")}>Logga in</a></li>
             </ul>
          </nav>
 
@@ -78,9 +77,9 @@ class registrationPage extends React.Component {
                     <input class="btn" type="button" value="Bli medlem" onClick={() => this.handleClick()}></input><br></br><br></br><br></br> 
   
                     <div id="container">
-                            <p>Redan medlem?<a href="login" style={login}>&nbsp;Logga in</a></p><br></br><br></br>
+                            <p>Redan medlem?<a /*href="login"*/  onClick={() => this.props.chosenPage("login")}>&nbsp;Logga in</a></p><br></br><br></br>
 
-                            <a id="back" href="index" style={login}>Tillbaka</a> 
+                            {/*<a id="back" /*href="index"  onClick={() => this.props.chosenPage("login")}>Tillbaka</a>*/}
                     </div>
                 </form>
             </div>

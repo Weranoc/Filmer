@@ -171,6 +171,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Libraries\LoginUtility.cs" />
+    <Compile Include="Libraries\MovieDB\MovieDBFetchError.cs" />
+    <Compile Include="Libraries\MovieDB\MovieDBMovieInformation.cs" />
+    <Compile Include="Libraries\MovieDB\MovieFetcher.cs" />
+    <Compile Include="Libraries\Utilities\Base64.cs" />
+    <Compile Include="Models\accesstoken.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccessTokenViewModel.cs" />
     <Compile Include="Models\CinemaLocation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -198,9 +207,11 @@
     <Compile Include="Models\MovieApi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewvingsViewModel.cs" />
     <Compile Include="Models\Salon.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MemberLoginModel.cs" />
     <Compile Include="Models\Viewing.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
