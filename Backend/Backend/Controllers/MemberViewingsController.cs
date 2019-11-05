@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -59,17 +60,20 @@ namespace Backend.Controllers
             }
         }
         [Route("GetSeats")]
-        [HttpGet]
-        public int getSeats(AmountOfSeatsModel numberOfSeats)
+        [HttpPost]
+        public int GetSeats(AmountOfSeatsModel numberOfSeats)
         {
-            var seats = db.MemberViewings.Where(x => x.ViewingID.Equals(numberOfSeats.viewingID));
-            int bookedSeats = 0;
-            foreach(var tickets in seats)
-            {
-                bookedSeats = bookedSeats + tickets.Tickets;
-            }
-            int seatsLeft = bookedSeats - numberOfSeats.seats;
+            //Debug.WriteLine(numberOfSeats.seats);
+            int seatsLeft = numberOfSeats.seats;
+            var seats = db.MemberViewings.Where(x => x.ViewingID == numberOfSeats.viewingID).ToList();
 
+            //Debug.WriteLine(seats);
+            foreach (var tickets in seats)
+            {
+                //Debug.WriteLine("hej " + tickets.Tickets);
+                seatsLeft = seatsLeft - tickets.Tickets;
+            }
+            //Debug.WriteLine(seatsLeft);
             return seatsLeft;
         }
         // GET: api/MemberViewings

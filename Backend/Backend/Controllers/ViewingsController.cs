@@ -11,12 +11,29 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using Backend.Libraries.MovieDB;
 using Backend.Models;
+using Backend.Controllers;
 
 namespace Backend.Controllers
 {
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class ViewingsController : ApiController
     {
+        public int GetSeats(int viewingID ,int numberOfSeats)
+        {
+            //Debug.WriteLine(numberOfSeats.seats);
+            int seatsLeft = numberOfSeats;
+            var seats = db.MemberViewings.Where(x => x.ViewingID == viewingID).ToList();
+
+            //Debug.WriteLine(seats);
+            foreach (var tickets in seats)
+            {
+                //Debug.WriteLine("hej " + tickets.Tickets);
+                seatsLeft = seatsLeft - tickets.Tickets;
+            }
+            //Debug.WriteLine(seatsLeft);
+            return seatsLeft;
+        }
+
         private FilmerEntities db = new FilmerEntities();
 
         // GET: api/Viewings
@@ -39,7 +56,7 @@ namespace Backend.Controllers
                         Adult = movieFromMovieDB.Adult, // If it's a adult movie, from MovieDB
                         LoungeName = item.Salon.SalonNumber.ToString(),// The lounge name from Lounge entity in the database (contected using Entity Framework)
                         ViewingDate = item.ViewingDate, // Date of the viewing from the Viewing entity in the database
-                        TotalSeats = item.Salon.MaxSeats // And number of seats in the Lounge
+                        TotalSeats = GetSeats(item.ViewingID, item.Salon.MaxSeats) // And number of seats in the Lounge
                     });
                 /*}
                 catch

@@ -8,6 +8,10 @@ class profilePage extends React.Component {
     super(props); 
     this.state = { };
     }
+    handleLogOut(){
+        this.props.loggedIn({})
+        this.props.chosenPage("login")
+    }
     render() {
         return (
             <div>
@@ -26,13 +30,13 @@ class profilePage extends React.Component {
                             <ul class="nav-links">
                                 <li><a /*href="home"*/ onClick={() => this.props.chosenPage("home")}>Start</a></li>
                                 <li><a /*href="movies"*/ onClick={() => this.props.chosenPage("movies")}>Filmer</a></li>
-                                <li><a /*href="login"*/ onClick={() => this.props.chosenPage("login")}>Logga ut</a></li>
+                                <li><a /*href="login"*/ onClick={() => this.handleLogOut()}>Logga ut</a></li>
                             </ul>
                         </nav>
 
                         <div class="signin">
                                 <form>
-                                    <h2 style={{color: 'rgb(226, 226, 226)', letterspacing: '3px', fontsize: '20px', fontfamily: 'Pridi, serif'}}>Min profil</h2><Viewings signInToken={this.props.memberToken}/><br/><br/>
+                                    <h2 style={{color: 'rgb(226, 226, 226)', letterspacing: '3px', fontsize: '20px', fontfamily: 'Pridi, serif'}}>Min profil</h2><Viewings signInToken={this.props.memberToken} page={this.props.chosenPage} movieItem={this.props.movieItems}/><br/><br/>
                                 </form>
                             </div>
             </div>

@@ -7,6 +7,7 @@ import RegistrationPage from './components/registration';
 //import { getSession } from './components/Cookie';
 import ProfilePage from './components/singedIn';
 //import MoviesPage from './components/New folder/'
+import ConfirmationPage from './components/Confirmation'
 
 class App extends React.Component {
   constructor() {
@@ -15,7 +16,8 @@ class App extends React.Component {
     this.state = {
       chosenPage: "home",
       loggedIn: false,
-      accessToken: {}
+      accessToken: {},
+      movieItems: {}
     };
   }
 
@@ -27,6 +29,9 @@ class App extends React.Component {
   }
   handleLogOut(token){
     this.setState({ loggedIn:false, accessToken: token})
+  }
+  handleMovieItems(item){
+    this.setState({movieItems: item})
   }
 
   render() {
@@ -62,7 +67,7 @@ class App extends React.Component {
       )}
         {!this.state.loggedIn ? (
           this.state.chosenPage === "login"? (
-          <LoginPage loggedIn={token => this.handleAccessToken(token)} chosenPage={page =>this.pageHandler(page)}/>
+          <LoginPage loggedIn={token => this.handleAccessToken(token)} chosenPage={page => this.pageHandler(page)}/>
           ) : (
             <div/>
           )
@@ -71,7 +76,7 @@ class App extends React.Component {
         )}
         {this.state.loggedIn ? (
           this.state.chosenPage === "profile"? (
-            <ProfilePage chosenPage={page =>this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)} memberToken={this.state.accessToken}/>
+            <ProfilePage chosenPage={page => this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)} memberToken={this.state.accessToken} movieItems={item => this.handleMovieItems(item)} />
         ) : (
             <div/>
           )
@@ -80,12 +85,17 @@ class App extends React.Component {
         )}
          {!this.state.loggedIn ? (
            this.state.chosenPage === "registration" ? (
-             <RegistrationPage chosenPage={page =>this.pageHandler(page)}/>
+             <RegistrationPage chosenPage={page => this.pageHandler(page)}/>
              ) : (
               <div/>
             )
           ) : (
           <></>
+          )}
+          {this.state.chosenPage === "confirmation" ? (
+             <ConfirmationPage chosenPage={page => this.pageHandler(page)} movieItems={this.state.movieItems} loggedIn={token => this.handleLogOut(token)}/>
+             ) : (
+              <div/>
           )}
           {/*this.state.chosenPage === "movies" ? (
             <MoviesPage chosenPage={page =>this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)}/>

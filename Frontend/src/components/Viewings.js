@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Viewings extends Component {
   constructor(props) {
     super(props);
-    this.state = { result: null, loaded: false ,tickets: 2, accessToken: this.props.signInToken , viewingID: 0};
+    this.state = { result: null, loaded: false ,tickets: 2, accessToken: this.props.signInToken , viewingID: 0, seat: 90};
   }
 
   componentDidMount() {
@@ -16,9 +16,9 @@ class Viewings extends Component {
       .then(data => this.setState({ result: data, loaded: true }));
   };
   //Ska lägga till, så man inte kan boka mer platser, än vad det finns
-  handleBooking(movieId, amountOfTickets, token, /*ticketsLeft*/){
-    /*if(ticketsLeft > amountOfTickets)
-    {*/ this.state.viewingID = this.setState(movieId)
+  handleBooking(movieId, amountOfTickets, token, ticketsLeft, itemsForMovie){
+    if(ticketsLeft > amountOfTickets)
+    { this.setState({viewingID: movieId})
       fetch("http://localhost:59464/MakeBooking", {
       method: "POST",
       headers: {
@@ -38,15 +38,19 @@ class Viewings extends Component {
         } else {
           console.log(data);
           alert(this.state.tickets + " bokat till" + movieId)
+          this.props.movieItem(itemsForMovie)
+          this.props.page("confirmation")
         }
       });
-    /*}
+    }
     else{
       alert("You have booked to many tickets")
-    }*/
+    }
   }
   //Försöker fixa en funktion som uppdaterar antalet platser
-  seatsLeft(Seats, ID){
+  /*seatsLeft(Seats, ID){
+    //alert(ID)
+    var stolar=[]
     fetch("http://localhost:59464/GetSeats", {
     method: "POST", 
     headers: { 
@@ -60,12 +64,15 @@ class Viewings extends Component {
     .then(Response => Response.json()) 
     .then(data => { 
       if(data < 0){ 
-        alert('Finns inte tillräkligt många platser')
+        
       }else{ 
-        alert('Dina biljetter är bokade')
+        //alert(data)
+        this.setState({seat: data})
+        stolar.push(data)
       } 
     }) 
-}; 
+    return stolar
+}; */
   render() {
     return (
       <div>
@@ -79,7 +86,7 @@ class Viewings extends Component {
                       {item.Id}. {item.ViewingDate} - {item.MovieName} (
                       {item.Length}m) [Seats: {item.TotalSeats}] 
                       <div>
-                        <input className="btn" type="button" value="Boka" onClick={() => this.handleBooking(item.Id, this.state.tickets, this.state.accessToken/*, this.seatsLeft(item.TotalSeats)*/ )} />
+                        <input className="btn" type="button" value="Boka" onClick={() => this.handleBooking(item.Id, this.state.tickets, this.state.accessToken, item.TotalSeats, item)}/>
                       </div>
                     </div>
                   ))
