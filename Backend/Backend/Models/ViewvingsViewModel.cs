@@ -15,5 +15,6 @@ namespace Backend.Models
         public DateTime ViewingDate { get; set; }
         public int AvailableSeats { get; set; }
         public int TotalSeats { get; set; }
+        public string Poster { get; set; }
     }
 }

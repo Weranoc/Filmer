@@ -1,10 +1,8 @@
 import React from 'react';
-import style from './MoviePageStyle.css';
+import style from './style.css';
 
 class MoviePage extends React.Component {
-  constructor() { 
-    super();
-  }
+
 ticketModal() {
     var x = document.getElementById("msg");
     x.className = "show";

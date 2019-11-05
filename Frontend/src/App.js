@@ -17,7 +17,8 @@ class App extends React.Component {
       chosenPage: "home",
       loggedIn: false,
       accessToken: {},
-      movieItems: {}
+      movieItems: {},
+      tickets: 0
     };
   }
 
@@ -32,6 +33,9 @@ class App extends React.Component {
   }
   handleMovieItems(item){
     this.setState({movieItems: item})
+  }
+  handleTicket(ticket){
+    this.setState({tickets: ticket})
   }
 
   render() {
@@ -76,7 +80,7 @@ class App extends React.Component {
         )}
         {this.state.loggedIn ? (
           this.state.chosenPage === "profile"? (
-            <ProfilePage chosenPage={page => this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)} memberToken={this.state.accessToken} movieItems={item => this.handleMovieItems(item)} />
+            <ProfilePage chosenPage={page => this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)} memberToken={this.state.accessToken} movieItems={item => this.handleMovieItems(item)} tickets={ticket => this.handleTicket(ticket)} />
         ) : (
             <div/>
           )
@@ -93,7 +97,7 @@ class App extends React.Component {
           <></>
           )}
           {this.state.chosenPage === "confirmation" ? (
-             <ConfirmationPage chosenPage={page => this.pageHandler(page)} movieItems={this.state.movieItems} loggedIn={token => this.handleLogOut(token)}/>
+             <ConfirmationPage chosenPage={page => this.pageHandler(page)} movieItems={this.state.movieItems} loggedIn={token => this.handleLogOut(token)} tickets={this.state.tickets}/>
              ) : (
               <div/>
           )}

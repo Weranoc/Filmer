@@ -1,5 +1,5 @@
 import React from "react";
-import login from './login.css';
+import style from './style.css';
 import "./../App.css";
 import Viewings from './Viewings'
 
@@ -15,30 +15,32 @@ class profilePage extends React.Component {
     render() {
         return (
             <div>
-                    <meta charSet="UTF-8"/>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                    <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
-                    <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet"/>
-                    <link rel="stylesheet" href={login}/>
-                    <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet"/>
+                <meta charSet="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
+                <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet"/>
+                <link rel="stylesheet" href={style}/>
+                <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet"/>
 
-                    <title>Min sida</title>
-                        <nav>
-                                <div class="logo">
-                                <h4>FILMSTADEN</h4>
-                                </div>
-                            <ul class="nav-links">
-                                <li><a /*href="home"*/ onClick={() => this.props.chosenPage("home")}>Start</a></li>
-                                <li><a /*href="movies"*/ onClick={() => this.props.chosenPage("movies")}>Filmer</a></li>
-                                <li><a /*href="login"*/ onClick={() => this.handleLogOut()}>Logga ut</a></li>
-                            </ul>
-                        </nav>
-
-                        <div class="signin">
-                                <form>
-                                    <h2 style={{color: 'rgb(226, 226, 226)', letterspacing: '3px', fontsize: '20px', fontfamily: 'Pridi, serif'}}>Min profil</h2><Viewings signInToken={this.props.memberToken} page={this.props.chosenPage} movieItem={this.props.movieItems}/><br/><br/>
-                                </form>
-                            </div>
+                <title>Min sida</title>
+                <nav>
+                    <div class="logo">
+                        <h4>FILMSTADEN</h4>
+                    </div>
+                    <ul class="nav-links">
+                        <li><div onClick={() => this.props.chosenPage("home")}>Start</div></li>
+                        <li><div onClick={() => this.props.chosenPage("movies")}>Filmer</div></li>
+                        <li><div onClick={() => this.handleLogOut()}>Logga ut</div></li>
+                    </ul>
+                </nav>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+                    <div class="signin">
+                        <form>
+                            <h2 style={{color: 'rgb(226, 226, 226)', letterspacing: '3px', fontsize: '20px', fontfamily: 'Pridi, serif'}}>Min profil</h2>
+                            <Viewings signInToken={this.props.memberToken} page={this.props.chosenPage} movieItem={this.props.movieItems} ticket={this.props.tickets}/><br/><br/>
+                        </form>
+                    </div>
+                </div>
             </div>
         );
     }
