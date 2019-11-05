@@ -6,7 +6,7 @@ import LoginPage from './components/login';
 import RegistrationPage from './components/registration';
 //import { getSession } from './components/Cookie';
 import ProfilePage from './components/singedIn';
-//import MoviesPage from './components/New folder/'
+import MoviesPage from './components/MoviePage'
 import ConfirmationPage from './components/Confirmation'
 
 class App extends React.Component {
@@ -97,12 +97,12 @@ class App extends React.Component {
              ) : (
               <div/>
           )}
-          {/*this.state.chosenPage === "movies" ? (
-            <MoviesPage chosenPage={page =>this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)}/>
+          {this.state.chosenPage === "movies" ? (
+            <MoviesPage chosenPage={page =>this.pageHandler(page)} loggedIn={token => this.handleLogOut(token)} logain={this.state.loggedIn}/>
         ) : (
             <div/>
           
-        )*/}
+        )}
       </div>
 
     );

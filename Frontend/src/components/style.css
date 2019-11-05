@@ -35,7 +35,7 @@
     list-style: none;
   }
   
-  .nav-links a {
+  .nav-links div {
     color: rgb(226, 226, 226);
     text-decoration: none;
     letter-spacing: 3px;

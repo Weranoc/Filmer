@@ -15,7 +15,7 @@
         <AssociationConnector Association="FilmerModel.FK__MemberVie__Viewi__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="FilmerModel.FK__Viewing__SalonID__440B1D61" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FilmerModel.accesstoken" Width="1.5" PointX="10.375" PointY="1.875" />
-        <EntityTypeShape EntityType="FilmerModel.MovieApi" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="FilmerModel.MovieApi" Width="1.5" PointX="3.125" PointY="3.875" />
         <AssociationConnector Association="FilmerModel.FK__Viewing__MovieAp__45F365D3" />
       </Diagram>
     </edmx:Diagrams>

@@ -19,20 +19,20 @@ class index extends React.Component {
             <h4>FILMSTADEN</h4>
             </div>
         <ul class="nav-links">
-            <li><a /*href="home"*/  onClick={() => this.props.chosenPage("home")}>Start</a></li>
-            <li><a /*href="movies"*/ onClick={() => this.props.chosenPage("movies")}>Filmer</a></li>
+            <li><div /*href="home"*/  onClick={() => this.props.chosenPage("home")}>Start</div></li>
+            <li><div /*href="movies"*/ onClick={() => this.props.chosenPage("movies")}>Filmer</div></li>
             {!this.props.logain ? (
-            <li><a /*href="login"*/ onClick={() => this.props.chosenPage("login")}>Logga in</a></li>
+            <li><div /*href="login"*/ onClick={() => this.props.chosenPage("login")}>Logga in</div></li>
             ) : (
               <div/>
             )}
             {this.props.logain ? (
-          <li><a /*href="login"*/ onClick={() => this.props.chosenPage("profile")}>Profil</a></li>
+          <li><div /*href="login"*/ onClick={() => this.props.chosenPage("profile")}>Profil</div></li>
             ) : (
               <div/>
             )}
             {this.props.logain ? (
-            <li><a onClick={() => this.props.loggedIn({})}>Logga ut</a></li>
+            <li><div onClick={() => this.props.loggedIn({})}>Logga ut</div></li>
               ) : (
                 <div/>
               )}
@@ -45,13 +45,13 @@ class index extends React.Component {
 <footer id="footer">
         <ul class="socicons-list">
                 <li>
-                  <a href='https://www.facebook.com/FilmstadenAB/'><span class="socicon-facebook"></span></a> 
+                  <div href='https://www.facebook.com/FilmstadenAB/'><span class="socicon-facebook"></span></div> 
                 </li>
                   <li>
-                  <a href='https://www.instagram.com/filmstaden_ab/'><span class="socicon-instagram"></span></a> 
+                  <div href='https://www.instagram.com/filmstaden_ab/'><span class="socicon-instagram"></span></div> 
                 </li> 
                 <li>
-                  <a href='https://twitter.com/filmstadenab'><span class="socicon-twitter"></span></a> 
+                  <div href='https://twitter.com/filmstadenab'><span class="socicon-twitter"></span></div> 
                 </li> 
             </ul>
 </footer>
