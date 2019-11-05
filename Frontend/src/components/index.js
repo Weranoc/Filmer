@@ -2,15 +2,14 @@ import React from 'react';
 import style from './style.css';
 
 class index extends React.Component {
-  constructor(props) { 
-    super(props);
-  }
+
     render() { 
   return (
 
 <div>
-<link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet"></link>
-    <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?rd5re8"></link>   
+    <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet"></link>
+    <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?rd5re8"></link>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css%22%3E"></link> 
     <link rel="stylesheet" href={style}></link>
 <body>
     
@@ -38,20 +37,18 @@ class index extends React.Component {
               )}
         </ul>
     </nav>
-
     <div class="maindiv"></div>
-
 </body>
 <footer id="footer">
         <ul class="socicons-list">
                 <li>
-                  <div href='https://www.facebook.com/FilmstadenAB/'><span class="socicon-facebook"></span></div> 
+                  <a href='https://www.facebook.com/FilmstadenAB/'><span class="socicon-facebook"></span></a> 
                 </li>
                   <li>
-                  <div href='https://www.instagram.com/filmstaden_ab/'><span class="socicon-instagram"></span></div> 
+                  <a href='https://www.instagram.com/filmstaden_ab/'><span class="socicon-instagram"></span></a> 
                 </li> 
                 <li>
-                  <div href='https://twitter.com/filmstadenab'><span class="socicon-twitter"></span></div> 
+                  <a href='https://twitter.com/filmstadenab'><span class="socicon-twitter"></span></a> 
                 </li> 
             </ul>
 </footer>

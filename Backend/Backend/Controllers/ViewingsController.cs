@@ -39,34 +39,25 @@ namespace Backend.Controllers
         // GET: api/Viewings
         public List<ViewvingsViewModel> Getmovies()
         {
-            var listOfMovies = db.Viewings.Include("Salon").Include("MovieApi").OrderBy(v => v.ViewingDate); // Get movies and sort them in date order
-            var resultList = new List<ViewvingsViewModel>(); // Define the return structure
+            var listOfMovies = db.Viewings.Include("Salon").Include("MovieApi").OrderBy(v => v.ViewingDate); 
+            var resultList = new List<ViewvingsViewModel>();
           
-            foreach (var item in listOfMovies) // For each movie in the viewings table (plus lounge information)
+            foreach (var item in listOfMovies) 
             {
-               /* try
-                {*/
-                    var movieFromMovieDB = MovieFetcher.GetMovie(item.MovieApi.MovieKey); // Make a fetch to Movie DB to get information about a movie
-                    // To the return list, add a View Model and add the information from both the Viewing, Lounge and MovieDB into a single object
-                    resultList.Add(new ViewvingsViewModel
-                    {
-                        Id = item.ViewingID,
-                        MovieName = movieFromMovieDB.Title, // Title for the Movie from the MovieDB
-                        Length = movieFromMovieDB.Runtime ?? 0, // The runtime from MovieDB
-                        Adult = movieFromMovieDB.Adult, // If it's a adult movie, from MovieDB
-                        LoungeName = item.Salon.SalonNumber.ToString(),// The lounge name from Lounge entity in the database (contected using Entity Framework)
-                        ViewingDate = item.ViewingDate, // Date of the viewing from the Viewing entity in the database
-                        TotalSeats = GetSeats(item.ViewingID, item.Salon.MaxSeats) // And number of seats in the Lounge
-                    });
-                /*}
-                catch
+                var movieFromMovieDB = MovieFetcher.GetMovie(item.MovieApi.MovieKey); 
+                resultList.Add(new ViewvingsViewModel
                 {
-                    return new List<ViewvingsViewModel>();
-                }*/
+                    Id = item.ViewingID,
+                    MovieName = movieFromMovieDB.Title, 
+                    Length = movieFromMovieDB.Runtime ?? 0,
+                    Adult = movieFromMovieDB.Adult,
+                    LoungeName = item.Salon.SalonNumber.ToString(),
+                    ViewingDate = item.ViewingDate,
+                    TotalSeats = GetSeats(item.ViewingID, item.Salon.MaxSeats),
+                    Poster = movieFromMovieDB.PosterPath
+                });
             }
-
-            return resultList; // Return the list of Movies
-
+            return resultList;
         }
 
 

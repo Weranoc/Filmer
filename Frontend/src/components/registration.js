@@ -1,5 +1,5 @@
 import React from "react";
-import login from './login.css';
+import style from './style.css';
 import "./../App.css";
 
 class registrationPage extends React.Component {
@@ -38,54 +38,43 @@ class registrationPage extends React.Component {
   };
   render() {
     return (
+<div>
+  <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet"></link>
+  <link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?rd5re8"></link>   
+  <link rel="stylesheet" href={style}></link>
+  <body>
+    <nav>
+      <div class="logo">
+      <h4>FILMSTADEN</h4>
+      </div>
+      <ul class="nav-links">
+          <li><div onClick={() => this.props.chosenPage("home")}>Start</div></li>
+          <li><div onClick={() => this.props.chosenPage("movies")}>Filmer</div></li>
+          <li><div onClick={() => this.props.chosenPage("login")}>Logga in</div></li>
+      </ul>
+    </nav>
+    <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+      <div class="signin">
+        <form>
+          <h2 style={style}>Registrera medlem</h2><br/>
+          <input type="text" name="username" placeholder="Förnamn" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value })}></input><br/><br/>
 
-        <html lang="en">
-<head>
-    <meta charset="UTF-8"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
-    <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet"></link>
-    <link rel="stylesheet" href={login}></link>
-    <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet"></link>
+          <input type="text" name="username" placeholder="Efternamn" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value })}></input><br/><br/>
 
-    <title>Register</title>
-</head>
-<body>
+          <input type="text" name="username" placeholder="E-post" value={this.state.email} onChange={e => this.setState({ email: e.target.value })}></input><br/><br/> 
 
-<nav>
-                <div class="logo">
-                <h4>FILMSTADEN</h4>
-                </div>
-            <ul class="nav-links">
-                <li><a /*href="home"*/  onClick={() => this.props.chosenPage("home")}>Start</a></li>
-                <li><a /*href="movies"*/ onClick={() => this.props.chosenPage("movies")}>Filmer</a></li>
-                <li><a /*href="login"*/ onClick={() => this.props.chosenPage("login")}>Logga in</a></li>
-            </ul>
-         </nav>
+          <input type="password" name="password" placeholder="Välj lösenord" value={this.state.password} onChange={e => this.setState({ password: e.target.value })}></input><br/><br/><br/> 
 
-         <div class="signin">
-                <form>
-                    <h2 style={login}>Registrera medlem</h2><br></br>
-                    <input type="text" name="username" placeholder="Förnamn" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value })}></input><br></br><br></br> 
- 
-                    <input type="text" name="username" placeholder="Efternamn" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value })}></input><br></br><br></br> 
+          <input class="btn" type="button" value="Bli medlem" onClick={() => this.handleClick()}></input><br/><br/><br/> 
 
-                    <input type="text" name="username" placeholder="E-post" value={this.state.email} onChange={e => this.setState({ email: e.target.value })}></input><br></br><br></br> 
-
-                    <input type="password" name="password" placeholder="Välj lösenord" value={this.state.password} onChange={e => this.setState({ password: e.target.value })}></input><br></br><br></br><br></br> 
-
-                    <input class="btn" type="button" value="Bli medlem" onClick={() => this.handleClick()}></input><br></br><br></br><br></br> 
-  
-                    <div id="container">
-                            <p>Redan medlem?<a /*href="login"*/  onClick={() => this.props.chosenPage("login")}>&nbsp;Logga in</a></p><br></br><br></br>
-
-                            {/*<a id="back" /*href="index"  onClick={() => this.props.chosenPage("login")}>Tillbaka</a>*/}
-                    </div>
-                </form>
-            </div>
-
-    </body>
-    </html>
+          <div id="container">
+            <p>Redan medlem?<div onClick={() => this.props.chosenPage("login")}>&nbsp;Logga in</div></p><br/><br/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</div>
 );
   }
 }
